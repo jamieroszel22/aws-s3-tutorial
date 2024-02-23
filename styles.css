@@ -1,0 +1,37 @@
+/* General Styles */
+body {
+    font-family: sans-serif; 
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5; 
+}
+
+header, footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-color: #e0e0e0;
+    padding: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Content Section Styles */
+.content {
+    /* Add your tutorial content styling here */
+}
