@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Simple Static Webpage</title>
+    <title>Create a Static Webpage with Amazon S3</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
       <nav>
-        <h1>My Website</h1>
+        <h1>AWS Tutorials</h1>
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
@@ -20,15 +20,82 @@
 
     <main>
       <section class="hero">
-        <h2>Welcome to My Tutorial Page</h2>
-        <p>Learn how to build and host static webpages on Amazon S3.</p>
+        <h2>Create a static website with Amazon S3</h2>
+        <p>
+          In this tutorial, we will build and host a static webpage on Amazon
+          S3.
+        </p>
       </section>
 
-      <section class="content"></section>
+      <section class="content">
+        <h3>What is Amazon S3 and How Do Static Sites Work?</h3>
+        <p>
+          <strong>Amazon S3 (Simple Storage Service)</strong> is a cloud-based
+          object storage service from Amazon Web Services (AWS). It's designed
+          to store and retrieve virtually unlimited amounts of data from
+          anywhere on the web. Think of it as a super-powered online hard drive
+          for your files.
+        </p>
+        <p>
+          <strong>Static websites</strong> are built entirely with HTML, CSS,
+          and maybe some client-side JavaScript. They don't rely on a server to
+          generate content on the fly, making them simple, fast, and often more
+          affordable to host.
+        </p>
+
+        <h3>Getting Started</h3>
+        <ol>
+          <li>
+            <strong>Sign up for AWS Free Tier:</strong> Go to the AWS free tier
+            page and sign up for an account.
+          </li>
+          <li>
+            <strong>Create an S3 Bucket:</strong>
+            <ul>
+              <li>
+                Open the AWS S3 console and create a new bucket. Give it a
+                unique name.
+              </li>
+              <li>Enable static website hosting in the bucket properties.</li>
+              <li>Set the index document to "index.html".</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Create a Bucket Policy:</strong> Create a bucket policy that
+            allows public access to the contents of the bucket.
+          </li>
+          <li>
+            <strong>Upload Files:</strong> Upload your HTML files (including
+            this index.html file) and any other assets (images, videos, etc.) to
+            the S3 bucket.
+          </li>
+          <li>
+            <strong>Your Website:</strong> Access your website using the
+            endpoint provided by Amazon S3. It will look something like:
+            http://your-bucket-name.s3-website.your-region.amazonaws.com
+          </li>
+        </ol>
+
+        <h3>Additional Notes</h3>
+        <ul>
+          <li>You can use any text editor to create your HTML files.</li>
+          <li>
+            You can upload images, videos, and other assets to your S3 bucket.
+          </li>
+          <li>
+            You can add client-side scripts to your website to make it more
+            interactive.
+          </li>
+          <li>
+            Once you are done with your website, you can delete the S3 bucket to
+            remove it from the internet.
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer>
-      <p>&copy; 2024 Your Name</p>
+      <p>&copy; 2024 Jamie Roszel</p>
     </footer>
   </body>
 </html>

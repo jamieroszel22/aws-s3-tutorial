@@ -34,4 +34,15 @@ nav li {
 /* Content Section Styles */
 .content {
     /* Add your tutorial content styling here */
+
+    /* If you used <strong> */
+    strong { 
+        font-weight: bold;
+    }
+
+    /* If you used <b> */
+    b {
+        font-weight: bold; 
+    }
 }
+
