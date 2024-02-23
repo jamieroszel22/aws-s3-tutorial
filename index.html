@@ -11,9 +11,19 @@
       <nav>
         <h1>AWS Tutorials</h1>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li>
+            <a href="https://www.jamieroszel.com" target="_blank">Portfolio</a>
+          </li>
+          <li>
+            <a href="https://jamieroszel.com/#about" target="_blank">About</a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/jamieroszel22/aws-s3-tutorial"
+              target="_blank"
+              >GitHub</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
@@ -36,6 +46,16 @@
           anywhere on the web. Think of it as a super-powered online hard drive
           for your files.
         </p>
+        <p>For more information on S3, check out the video below:</p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/_I14_sXHO8U?si=yhBB4JuOqLHRvpS2"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
         <p>
           <strong>Static websites</strong> are built entirely with HTML, CSS,
           and maybe some client-side JavaScript. They don't rely on a server to
@@ -56,8 +76,51 @@
                 Open the AWS S3 console and create a new bucket. Give it a
                 unique name.
               </li>
-              <li>Enable static website hosting in the bucket properties.</li>
-              <li>Set the index document to "index.html".</li>
+              <li>
+                Once your bucket is created, navigate to the
+                <strong>Properties</strong> tab.
+              </li>
+              <li>
+                Next, navigate to <em>Static website hosting</em> and click
+                <em>Edit</em>.
+              </li>
+              <li>Select "Enable" under <em>Static website hosting</em>.</li>
+              <li>Set the index document to <code>index.html</code>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Enable Public Access to an S3 Bucket:</strong>
+            <ul>
+              <li>
+                <strong>Open the Permissions tab:</strong> Click the
+                "Permissions" tab within your bucket's settings.
+              </li>
+              <li>
+                <strong>Locate the Block Public Access section:</strong> Scroll
+                down to find the section titled "Block public access (bucket
+                settings)".
+              </li>
+              <li>
+                <strong>Edit the settings:</strong> Click the "Edit" button next
+                to the Block Public Access settings.
+              </li>
+              <li>
+                <strong>Uncheck Block all public access:</strong> Locate the
+                checkbox labeled "Block all public access" and uncheck it.
+              </li>
+              <li>
+                <strong>Save Changes:</strong> Click the "Save Changes" button
+                to apply the modifications.
+              </li>
+              <li>
+                <strong>Confirmation:</strong> Type "confirm" into the provided
+                field to verify that you understand the security implications
+                and intentionally wish to make the bucket public.
+              </li>
+              <li>
+                <strong>Final Save:</strong> Click "Save Changes" once more to
+                finalize the process.
+              </li>
             </ul>
           </li>
           <li>
