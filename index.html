@@ -159,17 +159,62 @@
                     </code></pre>
               </li>
               <li>
-                <b>Explanation:</b>
-                <ul>
-                  <li>
-                    This policy grants public read access to objects within the
-                    bucket, necessary for a website.
-                  </li>
-                  <li>
-                    **Important:** Consider more restrictive policies if you
-                    have sensitive data.
-                  </li>
-                </ul>
+                <section class="bucket-policy-explanation">
+                  <h3>Bucket Policy Explanation</h3>
+
+                  <p>
+                    <b>Overall Purpose:</b> This policy is designed to grant
+                    public read access to all objects within a specific S3
+                    bucket. This is generally used when hosting static websites
+                    on S3.
+                  </p>
+
+                  <p><b>Key Elements:</b></p>
+                  <ul>
+                    <li>
+                      <b>Version:</b> <code>"2012-10-17"</code> Specifies the
+                      version of the policy language being used.
+                    </li>
+                    <li>
+                      <b>Statement: [ ... ]</b> This is an array containing one
+                      or more individual policy statements. In this case, we
+                      have a single statement. Let's break down that statement:
+                      <ul>
+                        <li>
+                          <b>Sid:</b>
+                          <code>"PublicReadForGetBucketObjects"</code> A
+                          "Statement ID", a simple identifier or label for this
+                          particular statement.
+                        </li>
+                        <li>
+                          <b>Effect:</b> <code>Allow</code> Determines whether
+                          the statement grants permissions (Allow) or denies
+                          them (Deny).
+                        </li>
+                        <li>
+                          <b>Principal:</b> <code>"*"</code> Specifies who the
+                          policy applies to. The asterisk (*) means "everyone"
+                          (i.e., public access).
+                        </li>
+                        <li>
+                          <b>Action:</b> <code>s3:GetObject</code> The specific
+                          Amazon S3 action that's being allowed. In this case,
+                          it's the ability to read/retrieve objects from the
+                          bucket.
+                        </li>
+                        <li>
+                          <b>Resource:</b>
+                          <code>"arn:aws:s3:::your-bucket-name/*"</code> The
+                          Amazon Resource Name (ARN) specifying the S3 bucket
+                          and objects to which this policy applies. You'll need
+                          to replace <code>"your-bucket-name"</code> with your
+                          actual bucket name. The asterisk at the end (*) means
+                          all objects inside the bucket are affected.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </section>
               </li>
               <li>
                 <b>Save Changes:</b> Click "Save" to apply the bucket policy.
