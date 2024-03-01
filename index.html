@@ -38,219 +38,169 @@
       </section>
 
       <section class="content">
-        <h3>What is Amazon S3 and How Do Static Sites Work?</h3>
+        <h1>Understanding the Basics</h1>
+
+        <h2>What is Amazon S3?</h2>
         <p>
-          <b>Amazon S3 (Simple Storage Service)</b> is a cloud-based object
-          storage service from Amazon Web Services (AWS). It's designed to store
-          and retrieve virtually unlimited amounts of data from anywhere on the
-          web. Think of it as a super-powered online hard drive for your files.
+          <strong>Amazon S3 (Simple Storage Service)</strong> is a cloud-based
+          object storage service from Amazon Web Services (AWS). It's designed
+          to store and retrieve virtually unlimited amounts of data from
+          anywhere on the web. Think of it as a super-powered online hard drive
+          for your files.
         </p>
         <p>For more information on S3, check out the video below:</p>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/_I14_sXHO8U?si=yhBB4JuOqLHRvpS2"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/_I14_sXHO8U?si=yhBB4JuOqLHRvpS2"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <h2>What is a static site?</h2>
         <p>
           <b>Static websites</b> are built entirely with HTML, CSS, and maybe
           some client-side JavaScript. They don't rely on a server to generate
           content on the fly, making them simple, fast, and often more
-          affordable to host.
+          affordable to host. For more information, see
+          <a
+            href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html"
+            target="_blank"
+            >Hosting a static website using Amazon S3</a
+          >.
         </p>
 
-        <h3>Getting Started</h3>
-        <ol>
+        <h2>Set Up Your AWS S3 Static Website</h2>
+        <h3>Create an AWS Account and S3 bucket</h3>
           <li>
-            <b>Sign up for AWS Free Tier:</b> Go to the AWS free tier page and
-            sign up for an account.
+            Sign up for AWS Free Tier: Go to the
+            <a
+              href="https://aws.amazon.com/free/?gclid=CjwKCAiAloavBhBOEiwAbtAJO7M3CGOLvbiQ9kqQdy6whCZ4gSxVAunUr3O-zpTc7_Sj_9XpqdqNYhoCuHcQAvD_BwE&trk=78b916d7-7c94-4cab-98d9-0ce5e648dd5f&sc_channel=ps&ef_id=CjwKCAiAloavBhBOEiwAbtAJO7M3CGOLvbiQ9kqQdy6whCZ4gSxVAunUr3O-zpTc7_Sj_9XpqdqNYhoCuHcQAvD_BwE:G:s&s_kwcid=AL!4422!3!432339156165!e!!g!!aws%20free%20tier!9572385111!102212379047&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all"
+              target="_blank"
+              >AWS free tier page</a
+            >
+            and sign up for an account.
           </li>
           <li>
-            <b>Create an S3 Bucket:</b>
-            <ul>
-              <li>
+            Create an S3 Bucket:
                 Open the AWS S3 console and create a new bucket. Give it a
                 unique name.
-              </li>
-              <li>
-                Once your bucket is created, navigate to the
-                <b>Properties</b> tab.
-              </li>
-              <li>
-                Next, navigate to <em>Static website hosting</em> and click
-                <em>Edit</em>.
-              </li>
-              <li>Select "Enable" under <em>Static website hosting</em>.</li>
-              <li>Set the index document to <code>index.html</code>.</li>
-            </ul>
+        <h3>Enable Static Website Hosting</h3>
+          <li>
+            Once your bucket is created, navigate to the <b>Properties</b> tab.
           </li>
           <li>
-            <b>Enable Public Access to an S3 Bucket:</b>
+            Next, navigate to <b>Static website hosting</b> and click <em>Edit</em>.
+          </li>
+          <li>
+            Under <b>Static website hosting</b>, select <em>Enable</em>.
+          </li>
+          <li>
+            Set the index document to <code>index.html</code>.</li>
+          </li>
+        <h3>Make Your Bucket Public</h3>
+              <li>
+                Click the <b>Permissions</b> tab within your bucket's settings.
+              </li>
+              <li>
+                Scroll down to find the section titled <b>Block public access (bucket settings)</b>.
+              </li>
+              <li>
+                Click the <b>Edit</b> button next to the Block Public Access settings.
+              </li>
+              <li>
+                Locate the checkbox labeled <b>Block all public access</b> and uncheck it.
+              </li>
+              <li>
+                Click <b>Save Changes</b> to apply the modifications.
+              </li>
+              <li>
+                Type <code>confirm</code> into the provided field to verify that you understand the security implications and intentionally wish to make the bucket public. <b>Important:</b> <em>By enabling public access, anyone on the internet will be able to see the files in your bucket. Make sure you only store content intended for public viewing.</em> 
+              </li>
+              <li>
+                Click <b>Save Changes</b> once more to finalize the process.
+              </li>
+
+        <h3>Apply a Bucket Policy (For Public Read Access)</h3>
+          <li>
+            A bucket policy defines the access permissions for your S3 bucket. In this case, we create a policy to allow public read access for making your website accessible.
+          </li>
+          <li>
+            In the S3 console, go to your bucket's <b>Permissions</b> tab.
+          </li>
+          <li>
+            Click on the <b>Bucket Policy</b> section.
+          </li>
+          <li>
+            Paste the following JSON code into the <b>Bucket policy</b> editor, replacing <code>your-bucket-name</code> with your actual bucket name:
+            <pre><code>
+            { 
+              "Version": "2012-10-17", 
+              "Statement": [ 
+                { 
+                  "Sid": "PublicReadForGetBucketObjects", 
+                  "Effect": "Allow", 
+                  "Principal": "*", 
+                  "Action": "s3:GetObject", 
+                  "Resource": "arn:aws:s3:::your-bucket-name/*" 
+                } 
+              ] 
+            }
+            </code></pre>
+
+        <h4>Bucket Policy Explanation</h4> 
+          <li>This policy is designed to grant public read access to all objects within a specific S3 bucket. This is generally used when hosting static websites on S3.</li>
+          <li>Here are the key elements of the policy:</li>
             <ul>
               <li>
-                <b>Open the Permissions tab:</b> Click the "Permissions" tab
-                within your bucket's settings.
+                Version: <code>"2012-10-17"</code> Specifies the version of the policy language being used.
               </li>
               <li>
-                <b>Locate the Block Public Access section:</b> Scroll down to
-                find the section titled "Block public access (bucket settings)".
+                Statement: [ ... ] This is an array containing one or more individual policy statements. In this case, we have a single statement. Let's break down that statement:
               </li>
               <li>
-                <b>Edit the settings:</b> Click the "Edit" button next to the
-                Block Public Access settings.
+                Sid: <code>"PublicReadForGetBucketObjects"</code> A "Statement ID", a simple identifier or label for this particular statement.
               </li>
               <li>
-                <b>Uncheck Block all public access:</b> Locate the checkbox
-                labeled "Block all public access" and uncheck it.
+                Effect: <code>Allow</code> Determines whether the statement grants permissions (Allow) or denies them (Deny).
               </li>
               <li>
-                <b>Save Changes:</b> Click the "Save Changes" button to apply
-                the modifications.
+                Principal: <code>"*"</code> Specifies who the policy applies to. The asterisk (*) means "everyone"
+                            (i.e., public access).
               </li>
               <li>
-                <b>Confirmation:</b> Type "confirm" into the provided field to
-                verify that you understand the security implications and
-                intentionally wish to make the bucket public.
-                <b>Important:</b> By enabling public access, anyone on the
-                internet will be able to see the files in your bucket. Make sure
-                you only store content intended for public viewing.
+                Action: <code>s3:GetObject</code> The specific Amazon S3 action that's being allowed. In this case, it's the ability to read/retrieve objects from the bucket.
               </li>
               <li>
-                <b>Final Save:</b> Click "Save Changes" once more to finalize
-                the process.
-              </li>
+                Resource: <code>"arn:aws:s3:::your-bucket-name/*"</code> The Amazon Resource Name (ARN) specifying the S3 bucket and objects to which this policy applies. You'll need to replace <code>"your-bucket-name"</code> with your actual bucket name. The asterisk at the end (*) means all objects inside the bucket are affected.
             </ul>
+            
+            </li>
+            <h3>Apply Bucket Policy</h3>
+            <li>
+              Click <b>Save</b> to apply the bucket policy.
+            </li>
+        <h3> Upload and Access Your Website</h3>
+          <li>
+            Upload your HTML files and any other assets (images, videos, diagrams) to the S3 bucket.
           </li>
           <li>
-            <strong>Apply a Bucket Policy:</strong>
-            <ul>
-              <li>
-                <b>Purpose:</b> A bucket policy defines the access permissions
-                for your S3 bucket. In this case, we'll create a policy to allow
-                public read access for making your website accessible.
-              </li>
-              <li>
-                <b>Navigate to Permissions:</b> In the S3 console, go to your
-                bucket's "Permissions" tab.
-              </li>
-              <li>
-                <b>Bucket Policy Section:</b> Click on the "Bucket Policy"
-                section.
-              </li>
-              <li>
-                <b>Paste the Policy:</b> Paste the following JSON code into the
-                bucket policy editor,
-                <b
-                  >replacing 'your-bucket-name' with your actual bucket name:</b
-                >
-                <pre><code>
-                    { 
-                      "Version": "2012-10-17", 
-                      "Statement": [ 
-                        { 
-                          "Sid": "PublicReadForGetBucketObjects", 
-                          "Effect": "Allow", 
-                          "Principal": "*", 
-                          "Action": "s3:GetObject", 
-                          "Resource": "arn:aws:s3:::your-bucket-name/*" 
-                        } 
-                      ] 
-                    }
-                    </code></pre>
-              </li>
-              <li>
-                <section class="bucket-policy-explanation">
-                  <h3>Bucket Policy Explanation</h3>
-
-                  <p>
-                    <b>Overall Purpose:</b> This policy is designed to grant
-                    public read access to all objects within a specific S3
-                    bucket. This is generally used when hosting static websites
-                    on S3.
-                  </p>
-
-                  <p><b>Key Elements:</b></p>
-                  <ul>
-                    <li>
-                      <b>Version:</b> <code>"2012-10-17"</code> Specifies the
-                      version of the policy language being used.
-                    </li>
-                    <li>
-                      <b>Statement: [ ... ]</b> This is an array containing one
-                      or more individual policy statements. In this case, we
-                      have a single statement. Let's break down that statement:
-                      <ul>
-                        <li>
-                          <b>Sid:</b>
-                          <code>"PublicReadForGetBucketObjects"</code> A
-                          "Statement ID", a simple identifier or label for this
-                          particular statement.
-                        </li>
-                        <li>
-                          <b>Effect:</b> <code>Allow</code> Determines whether
-                          the statement grants permissions (Allow) or denies
-                          them (Deny).
-                        </li>
-                        <li>
-                          <b>Principal:</b> <code>"*"</code> Specifies who the
-                          policy applies to. The asterisk (*) means "everyone"
-                          (i.e., public access).
-                        </li>
-                        <li>
-                          <b>Action:</b> <code>s3:GetObject</code> The specific
-                          Amazon S3 action that's being allowed. In this case,
-                          it's the ability to read/retrieve objects from the
-                          bucket.
-                        </li>
-                        <li>
-                          <b>Resource:</b>
-                          <code>"arn:aws:s3:::your-bucket-name/*"</code> The
-                          Amazon Resource Name (ARN) specifying the S3 bucket
-                          and objects to which this policy applies. You'll need
-                          to replace <code>"your-bucket-name"</code> with your
-                          actual bucket name. The asterisk at the end (*) means
-                          all objects inside the bucket are affected.
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </section>
-              </li>
-              <li>
-                <b>Save Changes:</b> Click "Save" to apply the bucket policy.
-              </li>
-            </ul>
+            Access your website using the endpoint provided by Amazon S3. It will look something like <code>http://your-bucket-name.s3-website.your-region.amazonaws.com</code>.
           </li>
-          <li>
-            <b>Upload Files:</b> Upload your HTML files (including this
-            index.html file) and any other assets (images, videos, etc.) to the
-            S3 bucket.
-          </li>
-          <li>
-            <b>Your Website:</b> Access your website using the endpoint provided
-            by Amazon S3. It will look something like:
-            http://your-bucket-name.s3-website.your-region.amazonaws.com
-          </li>
-        </ol>
 
         <h3>Additional Notes</h3>
-        <ul>
           <li>You can use any text editor to create your HTML files.</li>
           <li>
             You can upload images, videos, and other assets to your S3 bucket.
           </li>
           <li>
-            You can add client-side scripts to your website to make it more
-            interactive.
-          </li>
-          <li>
             Once you are done with your website, you can delete the S3 bucket to
             remove it from the internet.
           </li>
-        </ul>
       </section>
     </main>
 
